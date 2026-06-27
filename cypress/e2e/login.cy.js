@@ -21,6 +21,7 @@ describe("Form Login Testing - Portal UTH", () => {
     it("TC_LOGIN_01 - Kiểm tra trang Login hiển thị", () => {
         cy.url().should("include", "portal.ut.edu.vn");
         cy.contains("ĐĂNG NHẬP HỆ THỐNG").should("be.visible");
+
     });
 
     // TC_LOGIN_02

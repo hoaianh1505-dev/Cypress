@@ -15,3 +15,8 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
+
+// Thêm delay 2 giây cho mỗi test case (tc)
+afterEach(() => {
+    cy.wait(2000);
+});
