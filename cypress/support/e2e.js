@@ -21,7 +21,13 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     return false;
 });
 
-// Thêm delay 2 giây cho mỗi test case (tc)
+// Chặn popup khảo sát và thông báo toàn cục để không làm gián đoạn kịch bản kiểm thử
+beforeEach(() => {
+    cy.intercept('GET', '**/api/v1/survey/checkSurvey**', { body: { hasSurvey: false } });
+    cy.intercept('GET', '**/api/v1/notification/getPopup**', { body: null });
+});
+
+// Thêm delay sau mỗi test case (bật/tắt tại đây khi cần)
 afterEach(() => {
-    cy.wait(2000);
+    cy.delay(2000);
 });

@@ -19,8 +19,6 @@ describe("Responsive Testing - Portal UTH", () => {
 
         cy.get(LOGIN_BUTTON).click();
 
-        cy.wait(3000);
-
         // Đảm bảo đăng nhập thành công
         cy.url().should("not.include", "login");
     }

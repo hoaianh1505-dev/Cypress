@@ -23,3 +23,8 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+// Hàm delay dùng chung cho dự án - định nghĩa trong support để dễ bật/tắt
+Cypress.Commands.add('delay', (ms) => {
+    cy.wait(ms);
+});

@@ -2,7 +2,7 @@ describe("Navigation Testing", () => {
 
     const URL = "https://portal.ut.edu.vn/";
     const CREDENTIALS = {
-        username: "049205002122",
+        username: "087205006588",
         password: "abcxyz"
     };
 

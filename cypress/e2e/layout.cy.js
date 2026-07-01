@@ -9,28 +9,17 @@ describe("GUI Layout Testing - Homepage Dashboard", () => {
     const PASSWORD = "abcxyz";
 
     beforeEach(() => {
-        // Đăng nhập để vào trang chủ Dashboard
+        // Đăng nhập vào trang chủ Dashboard
         cy.visit(URL);
         cy.get(USERNAME_INPUT).type(USERNAME);
         cy.get(PASSWORD_INPUT).type(PASSWORD);
         cy.get(LOGIN_BUTTON).click();
-        cy.wait(3000); // Đợi chuyển hướng và tải dữ liệu Dashboard
-
-        // Đợi 2 giây để đảm bảo pop-up khảo sát bất đồng bộ có thời gian render (nếu có)
-        cy.wait(2000);
-        cy.get('body').then(($body) => {
-            if ($body.find('.MuiModal-backdrop, .MuiBackdrop-root').length > 0) {
-                // Tắt pop-up khảo sát nếu xuất hiện bằng regex tìm chữ "ĐỂ SAU"
-                cy.contains(/để sau/i).click({ force: true });
-                cy.wait(1000); // Đợi pop-up đóng hoàn toàn
-            }
-        });
+        cy.url().should("include", "/dashboard");
     });
 
     // TC_LAYOUT_01
     it("TC_LAYOUT_01 - Verify UTH logo display", () => {
-        // Logo của trường hiển thị rõ ràng trên header
-        cy.get('a[href="/dashboard"] img').first().should("be.visible").and(($img) => {
+        cy.get('img[alt="sv_logo_dashboard.png"]').first().should("be.visible").and(($img) => {
             expect($img[0].naturalWidth).to.be.greaterThan(0);
         });
     });
@@ -65,7 +54,7 @@ describe("GUI Layout Testing - Homepage Dashboard", () => {
     // TC_LAYOUT_06
     it("TC_LAYOUT_06 - Verify font consistency", () => {
         // Kiểm tra phông chữ hiển thị chính xác cho tên sinh viên
-        cy.contains("Đỗ Hoài Anh").should("be.visible").and("have.css", "font-family");
+        cy.contains(/Hoài Anh/i).should("be.visible").and("have.css", "font-family");
     });
 
     // TC_LAYOUT_07
