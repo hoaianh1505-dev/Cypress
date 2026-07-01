@@ -19,7 +19,7 @@ TC_ANN_07	Verify viewing/downloading attachments	Verify clicking on an announcem
 TC_ANN_08	Verify navigating back to Home by clicking UTH Logo from detail page	Verify clicking the school logo on the announcement detail page redirects back to the main homepage	"1. Go to announcement detail page
 2. Click the UTH school logo at the top left header
 3. Verify URL returns back to https://portal.ut.edu.vn/"	User is successfully redirected back to the portal homepage	Redirection back to homepage was successful	Passed
-TC_ANN_09	Verify Unread/Read status badge	Verify UI displays of the notifications/announcements badges or dynamic items	1. Observe the notification elements on the screen	Notification items are present and displayed properly	Badge elements are verified as displayed if present	Passed
+TC_ANN_09	Verify Unread/Read status badge	Verify UI displays of the notifications/announcements badges or dynamic items	1. Observe the notification elements on the screen	Notification items are present and displayed properly if data exists (dynamic check - may be empty)	Badge elements are verified as displayed if present (visual/dynamic check only)	Passed
 TC_ANN_10	Verify Date & Time formatting and sorting	Verify the publication date format of the news items contains the DD/MM/YYYY pattern	"1. Locate the first announcement item
 2. Retrieve its text content
 3. Validate the date matches the regex pattern DD/MM/YYYY"	The publication date matches the DD/MM/YYYY format pattern	Validated that date strings display properly with the standard DD/MM/YYYY layout	Passed

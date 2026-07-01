@@ -1,52 +1,31 @@
 ID	Summary	Description	Test Steps	Expected Result	Actual Result	Status
-TC_NAV_01	Verify Sidebar toggles on Hamburger click	"Verify that clicking the hamburger icon
-opens/displays the sidebar menu."	"1. Log in to dashboard homepage.
-2. Click the hamburger icon in the header."	"The sidebar menu expands and displays
-menus ""Thông tin chung"" and ""Học tập""."	Successfully expanded and displayed the sidebar menus.	Passed
-TC_NAV_02	Verify Sidebar collapse functionality	"Verify that clicking the hamburger menu
-toggles collapse state."	"1. Open sidebar on dashboard.
-2. Click hamburger icon to collapse.
-3. Verify menu text is hidden."	"The sidebar collapses and menu items like
-""Thông tin chung"" are no longer visible."	Successfully collapsed and hid the sidebar menu items.	Passed
-TC_NAV_03	Verify 'Thông tin chung' menu navigation	"Click ""Thông tin chung"" then click sub-menu
-""Thông tin chi tiết"" and verify page navigation."	"1. Log in and navigate to dashboard.
-2. Open sidebar if closed.
-3. Click ""Thông tin chung"" to expand.
-4. Click sub-menu ""Thông tin chi tiết"".
-5. Verify page URL contains ""/infordetail"" and elements are displayed."	"Successfully navigates to the detailed
-information page and displays details."	"Successfully navigated to the detailed info
-page and verified sub-elements."	Passed
-TC_NAV_04	Verify 'Học tập' menu	"Verify all menu links under 'Học tập'
-exist in the document."	"1. Log in and navigate to dashboard.
-2. Open sidebar if closed.
-3. Verify ""Học tập"" menu is visible.
-4. Verify sub-menu links for ""Đào tạo trực tuyến"",
-""Kết quả học tập"", ""Đăng ký học phần"", etc. exist."	"All sub-menu links under ""Học tập""
-are successfully displayed."	"Verified that all curriculum and
-registration links exist."	Passed
-TC_NAV_05	Verify navigation to 'Kết quả học tập'	"Click the sidebar/dashboard link to 'Kết quả học tập'
-and verify page URL."	"1. Log in and navigate to dashboard.
+TC_NAV_01	Verify Sidebar toggles on Hamburger click	"Verify that clicking the hamburger icon opens/displays the sidebar menu on mobile viewport."	"1. Log in to dashboard homepage.
+2. Set viewport to mobile (768x1024).
+3. Navigate to dashboard.
+4. Click the hamburger icon in the header."	"The sidebar menu expands and displays menus ""Thông tin chung"" and ""Học tập""."	Successfully expanded and displayed the sidebar menus.	Passed
+TC_NAV_02	Verify Sidebar collapse functionality	"Verify that clicking outside the sidebar (backdrop) collapses and hides the sidebar menu on mobile viewport."	"1. Log in and navigate to dashboard on mobile viewport (768x1024).
+2. Click hamburger icon to open sidebar.
+3. Verify ""Thông tin chung"" is visible.
+4. Click outside the sidebar (backdrop area) to close.
+5. Verify menu text is hidden."	"The sidebar collapses and menu items like ""Thông tin chung"" are no longer visible."	Successfully collapsed and hid the sidebar menu items by clicking outside.	Passed
+TC_NAV_03	Verify 'Thông tin chung' menu navigation	"Click ""Thông tin chung"" then click sub-menu ""Thông tin chi tiết"" and verify page navigation."	"1. Log in and navigate to dashboard.
+2. Click ""Thông tin chung"" to expand.
+3. Click sub-menu ""Thông tin chi tiết"".
+4. Verify page URL contains ""/infordetail"" and elements are displayed."	"Successfully navigates to the detailed information page and displays details."	"Successfully navigated to the detailed info page and verified sub-elements."	Passed
+TC_NAV_04	Verify 'Học tập' menu	"Verify all menu links under 'Học tập' exist in the document."	"1. Log in and navigate to dashboard.
+2. Verify ""Học tập"" menu is visible.
+3. Verify sub-menu links for ""Đào tạo trực tuyến"", ""Kết quả học tập"", ""Đăng ký học phần"", ""Đăng ký môn học điều kiện"", ""Chương trình khung"" exist."	"All sub-menu links under ""Học tập"" are successfully displayed."	"Verified that all curriculum and registration links exist."	Passed
+TC_NAV_05	Verify navigation to 'Kết quả học tập'	"Click the sidebar/dashboard link to 'Kết quả học tập' and verify page URL."	"1. Log in and navigate to dashboard.
 2. Click ""Kết quả học tập"" link."	The page successfully redirects to ""/transcript"" page.	Redirected to the transcript page successfully.	Passed
-TC_NAV_06	Verify navigation to 'Đăng ký học phần'	"Click the sidebar/dashboard link to 'Đăng ký học phần'
-and verify page URL."	"1. Log in and navigate to dashboard.
+TC_NAV_06	Verify navigation to 'Đăng ký học phần'	"Click the sidebar/dashboard link to 'Đăng ký học phần' and verify page URL."	"1. Log in and navigate to dashboard.
 2. Click ""Đăng ký học phần"" link."	The page successfully redirects to ""/coursesregistration"" page.	Redirected to the course registration page successfully.	Passed
-TC_NAV_07	Verify navigation to Online Payment	"Click the sidebar/dashboard link to tuition page
-and verify URL."	"1. Log in and navigate to dashboard.
+TC_NAV_07	Verify navigation to Online Payment	"Click the sidebar/dashboard link to tuition page and verify URL."	"1. Log in and navigate to dashboard.
 2. Click the link to tuition page."	The page successfully redirects to ""/tuition"" page.	Redirected to the tuition payment page successfully.	Passed
-TC_NAV_08	Verify User Profile dropdown	"Click user profile button and
-verify dropdown menu choices."	"1. Log in and navigate to dashboard.
-2. Dismiss survey popup if visible.
-3. Click profile button `#user-button`.
-4. Verify options ""Thông tin cá nhân"", ""Đổi mật khẩu trang sinh viên"",
-and ""Đăng xuất"" are visible."	Profile dropdown menu opens showing correct options.	"Opened the profile dropdown menu and
-verified option text successfully."	Passed
-TC_NAV_09	Verify navigation via School Logo	"Navigate to another page click school logo
-and verify redirection to dashboard."	"1. Log in and navigate to transcript page.
-2. Click school logo image in the header.
-3. Verify page redirects back to dashboard."	The page successfully redirects back to dashboard home.	"Successfully returned to the dashboard
-homepage upon clicking the logo."	Passed
-TC_NAV_10	Verify URL consistency during navigation	"Click multiple menu links verify URL
-return to dashboard and repeat."	"1. Log in and navigate to dashboard.
-2. For each path in list, click link, verify URL contains
-the expected path, and return to dashboard."	URL consistency is maintained for all navigated paths.	"Verified that all navigated URLs
-are correct and consistent."	Passed
+TC_NAV_08	Verify User Profile dropdown	"Click user profile button and verify dropdown menu choices."	"1. Log in and navigate to dashboard.
+2. Click profile button #user-button.
+3. Verify options ""Thông tin cá nhân"", ""Đổi mật khẩu trang sinh viên"", and ""Đăng xuất"" are visible."	Profile dropdown menu opens showing correct options.	"Opened the profile dropdown menu and verified option text successfully."	Passed
+TC_NAV_09	Verify navigation via School Logo	"Navigate to another page click school logo and verify redirection to dashboard."	"1. Log in and navigate to transcript page.
+2. Click school logo image (alt=""sv_logo_dashboard.png"") in the header.
+3. Verify page redirects back to dashboard."	The page successfully redirects back to dashboard home.	"Successfully returned to the dashboard homepage upon clicking the logo."	Passed
+TC_NAV_10	Verify URL consistency during navigation	"Click multiple menu links verify URL return to dashboard and repeat."	"1. Log in and navigate to dashboard.
+2. For each path in list (/transcript, /coursesregistration, /conditional): click link, verify URL contains the expected path, return to dashboard."	URL consistency is maintained for all navigated paths.	"Verified that all navigated URLs are correct and consistent."	Passed

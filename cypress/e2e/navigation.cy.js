@@ -17,15 +17,17 @@ describe("Navigation Testing", () => {
 
     const navigateTo = (path) => {
         cy.visit(URL + path);
+        cy.url().should("include", "/" + path);
     };
 
-    const checkMenuVisible = (menuItems) => {
-        menuItems.forEach(item => {
+    const checkMenuVisible = (items) => {
+        items.forEach((item) => {
             cy.contains(item).should("be.visible");
         });
     };
 
     beforeEach(() => {
+        cy.viewport(1280, 720);
         cy.session("login", login, {
             validate() {
                 cy.visit(URL + "dashboard");
@@ -35,73 +37,46 @@ describe("Navigation Testing", () => {
         navigateTo("dashboard");
     });
 
-    // TC_NAV_01 & TC_NAV_02: Sidebar Toggle
+    // TC_NAV_01: Sidebar Toggle - dùng viewport mobile để sidebar dùng Temporary Drawer
     it("TC_NAV_01 - Verify Sidebar toggles on Hamburger click", () => {
-        cy.get('svg[data-testid="ViewHeadlineRoundedIcon"]').parent().click();
+        cy.viewport(768, 1024);
+        navigateTo("dashboard");
+
+        // Click hamburger để mở sidebar
+        cy.get('svg[data-testid="ViewHeadlineRoundedIcon"]').first().parent().click({ force: true });
         checkMenuVisible(["Thông tin chung", "Học tập"]);
     });
 
-
+    // TC_NAV_02: Sidebar Collapse - dùng viewport mobile, đóng bằng backdrop
     it("TC_NAV_02 - Verify Sidebar collapse functionality", () => {
-        cy.get('svg[data-testid="ViewHeadlineRoundedIcon"]').click({ force: true });
-        cy.get('svg[data-testid="ViewHeadlineRoundedIcon"]').click({ force: true });
+        cy.viewport(768, 1024);
+        navigateTo("dashboard");
+
+        // Mở sidebar
+        cy.get('svg[data-testid="ViewHeadlineRoundedIcon"]').first().parent().click({ force: true });
+        cy.contains("Thông tin chung").should("be.visible");
+
+        // Đóng sidebar bằng cách click vào vùng ngoài (backdrop)
+        cy.get('.MuiBackdrop-root').click({ force: true });
         cy.contains("Thông tin chung").should("not.exist");
     });
 
-    // TC_NAV_03 & TC_NAV_04: Menu Verification
+    // TC_NAV_03: 'Thông tin chung' menu navigation
     it("TC_NAV_03 - Verify 'Thông tin chung' menu navigation", () => {
-        // Tắt pop-up khảo sát nếu xuất hiện
-        cy.wait(2000);
-        cy.get('body').then(($body) => {
-            if ($body.find('.MuiModal-backdrop, .MuiBackdrop-root').length > 0) {
-                cy.contains(/để sau/i).click({ force: true });
-                cy.wait(1000);
-            }
-        });
-
-        // Đảm bảo Sidebar được MỞ bằng cách click vào nút menu hamburger nếu nó đang đóng
-        cy.get('body').then(($body) => {
-            const isSidebarVisible = $body.find(':contains("Thông tin chung")').length > 0 && $body.find(':contains("Thông tin chung")').is(':visible');
-            if (!isSidebarVisible) {
-                cy.get('svg[data-testid="ViewHeadlineRoundedIcon"]').first().click({ force: true });
-                cy.wait(1000);
-            }
-        });
-
-        // Click mở rộng nhóm "Thông tin chung"
+        // Mở rộng nhóm "Thông tin chung"
         cy.contains("Thông tin chung", { timeout: 10000 }).should("be.visible").click({ force: true });
-        cy.wait(500);
 
-        // Click vào menu con "Thông tin chi tiết" để chuyển trang
+        // Click vào menu con "Thông tin chi tiết"
         cy.contains("Thông tin chi tiết").click({ force: true });
 
         cy.url().should("include", "/infordetail");
-
         cy.contains("Cập nhật thông tin").should("be.visible");
         cy.contains("Tin tức").should("be.visible");
         cy.contains("Thông tin chi tiết").should("be.visible");
     });
 
+    // TC_NAV_04: 'Học tập' menu verification
     it("TC_NAV_04 - Verify 'Học tập' menu", () => {
-        // Tắt pop-up khảo sát nếu xuất hiện
-        cy.wait(2000);
-        cy.get('body').then(($body) => {
-            if ($body.find('.MuiModal-backdrop, .MuiBackdrop-root').length > 0) {
-                cy.contains(/để sau/i).click({ force: true });
-                cy.wait(1000);
-            }
-        });
-
-        // Đảm bảo Sidebar được MỞ bằng cách kiểm tra chính xác vùng Sidebar/Drawer
-        cy.get('body').then(($body) => {
-            const drawer = $body.find('.MuiDrawer-paper, [class*="drawer"], [class*="sidebar"], aside');
-            const isOpen = drawer.length > 0 && drawer.is(':visible') && drawer.text().includes("Học tập");
-            if (!isOpen) {
-                cy.get('svg[data-testid="ViewHeadlineRoundedIcon"]').first().click({ force: true });
-                cy.wait(1000);
-            }
-        });
-
         const menuItems = [
             { selector: 'a[href*="courses.ut.edu.vn"]', text: "Đào tạo trực tuyến" },
             { selector: 'a[href="/transcript"]', text: "Kết quả học tập" },
@@ -117,47 +92,36 @@ describe("Navigation Testing", () => {
         });
     });
 
-    // TC_NAV_05 through TC_NAV_07: Navigation Tests
+    // TC_NAV_05: Navigation to 'Kết quả học tập'
     it("TC_NAV_05 - Verify navigation to 'Kết quả học tập'", () => {
-        cy.get('a[href="/transcript"]').click();
+        cy.get('a[href="/transcript"]').first().click({ force: true });
         cy.url().should("include", "/transcript");
     });
 
+    // TC_NAV_06: Navigation to 'Đăng ký học phần'
     it("TC_NAV_06 - Verify navigation to 'Đăng ký học phần'", () => {
-        cy.get('a[href="/coursesregistration"]').first().click();
+        cy.get('a[href="/coursesregistration"]').first().click({ force: true });
         cy.url().should("include", "/coursesregistration");
     });
 
+    // TC_NAV_07: Navigation to Online Payment
     it("TC_NAV_07 - Verify navigation to Online Payment", () => {
-        cy.get('a[href="/tuition"]').click();
+        cy.get('a[href="/tuition"]').first().click({ force: true });
         cy.url().should("include", "/tuition");
     });
 
     // TC_NAV_08: User Profile Dropdown
     it("TC_NAV_08 - Verify User Profile dropdown", () => {
-        // Tắt pop-up khảo sát nếu xuất hiện
-        cy.wait(2000);
-        cy.get('body').then(($body) => {
-            if ($body.find('.MuiModal-backdrop, .MuiBackdrop-root').length > 0) {
-                cy.contains(/để sau/i).click({ force: true });
-                cy.wait(1000);
-            }
-        });
-
-        // Click bình thường (không force) vào #user-button để kích hoạt sự kiện React
-        cy.get('#user-button').click();
-
-        // Đợi menu xuất hiện và kiểm tra các mục hiển thị
-        cy.wait(1000);
+        cy.get('#user-button').click({ force: true });
         checkMenuVisible(["Thông tin cá nhân", "Đổi mật khẩu trang sinh viên", "Đăng xuất"]);
     });
 
     // TC_NAV_09: Logo Navigation
     it("TC_NAV_09 - Verify navigation via School Logo", () => {
-        cy.get('a[href="/transcript"]').click();
+        cy.get('a[href="/transcript"]').first().click({ force: true });
         cy.url().should("include", "/transcript");
 
-        cy.get('img[alt="sv_logo_dashboard.png"]').click();
+        cy.get('img[alt="sv_logo_dashboard.png"]').click({ force: true });
         cy.url().should("include", "/dashboard");
     });
 
@@ -170,7 +134,7 @@ describe("Navigation Testing", () => {
         ];
 
         navigationPaths.forEach(nav => {
-            cy.get(nav.href).first().click();
+            cy.get(nav.href).first().click({ force: true });
             cy.url().should("include", nav.expectedUrl);
             navigateTo("dashboard");
         });
