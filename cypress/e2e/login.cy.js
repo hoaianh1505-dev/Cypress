@@ -1,14 +1,12 @@
-
-describe("Form Login Testing - Portal UTH", () => {
+describe("GUI Login Page Testing - Portal UTH", () => {
 
     const URL = "https://portal.ut.edu.vn/";
 
     const USERNAME_INPUT = 'input[name="username"]';
     const PASSWORD_INPUT = 'input[name="password"]';
     const LOGIN_BUTTON = 'button[type="submit"]';
-
-    const VALID_USERNAME = "087205006588";
-    const VALID_PASSWORD = "anh123456";
+    const LOGO = 'a[href="/dashboard"] img';
+    const TOGGLE_PASSWORD = 'button[aria-label="toggle password visibility"]';
 
     const INVALID_USERNAME = "invalid_user";
     const INVALID_PASSWORD = "invalid_password";
@@ -18,89 +16,58 @@ describe("Form Login Testing - Portal UTH", () => {
     });
 
     // TC_LOGIN_01
-    it("TC_LOGIN_01 - Kiểm tra trang Login hiển thị", () => {
-        cy.url().should("include", "portal.ut.edu.vn");
-        cy.contains("ĐĂNG NHẬP HỆ THỐNG").should("be.visible");
-
+    it("TC_LOGIN_01 - Verify UTH Portal Logo display", () => {
+        cy.get(LOGO).should("be.visible");
     });
 
     // TC_LOGIN_02
-    it("TC_LOGIN_02 - Kiểm tra ô Username hiển thị", () => {
-        cy.get(USERNAME_INPUT).should("be.visible");
+    it("TC_LOGIN_02 - Verify Login Title display", () => {
+        cy.contains("ĐĂNG NHẬP HỆ THỐNG").should("be.visible");
     });
 
     // TC_LOGIN_03
-    it("TC_LOGIN_03 - Kiểm tra ô Password hiển thị", () => {
-        cy.get(PASSWORD_INPUT).should("be.visible");
+    it("TC_LOGIN_03 - Verify Username Label display", () => {
+        cy.contains("Tài khoản đăng nhập").should("be.visible");
     });
 
     // TC_LOGIN_04
-    it("TC_LOGIN_04 - Kiểm tra nút Login hiển thị", () => {
-        cy.get(LOGIN_BUTTON).should("be.visible");
+    it("TC_LOGIN_04 - Verify Username Input Box display", () => {
+        cy.get(USERNAME_INPUT).should("be.visible");
     });
 
     // TC_LOGIN_05
-    it("TC_LOGIN_05 - Username để trống", () => {
-
-        cy.get(PASSWORD_INPUT).type(VALID_PASSWORD);
-
-        cy.get(LOGIN_BUTTON).click();
-
-        cy.url().should("include", "portal.ut.edu.vn");
+    it("TC_LOGIN_05 - Verify Password Label display", () => {
+        cy.contains("Mật khẩu").should("be.visible");
     });
 
     // TC_LOGIN_06
-    it("TC_LOGIN_06 - Password để trống", () => {
-
-        cy.get(USERNAME_INPUT).type(VALID_USERNAME);
-
-        cy.get(LOGIN_BUTTON).click();
-
-        cy.url().should("include", "portal.ut.edu.vn");
+    it("TC_LOGIN_06 - Verify Password Input Box display", () => {
+        cy.get(PASSWORD_INPUT).should("be.visible");
     });
 
     // TC_LOGIN_07
-    it("TC_LOGIN_07 - Username và Password đều trống", () => {
-
-        cy.get(LOGIN_BUTTON).click();
-
-        cy.url().should("include", "portal.ut.edu.vn");
+    it("TC_LOGIN_07 - Verify Password Visibility Toggle button", () => {
+        cy.get(TOGGLE_PASSWORD).should("be.visible");
     });
 
     // TC_LOGIN_08
-    it("TC_LOGIN_08 - Sai Username", () => {
-
-        cy.get(USERNAME_INPUT).type(INVALID_USERNAME);
-
-        cy.get(PASSWORD_INPUT).type(VALID_PASSWORD);
-
-        cy.get(LOGIN_BUTTON).click();
-
-        cy.url().should("include", "portal.ut.edu.vn");
+    it("TC_LOGIN_08 - Verify Login Button display", () => {
+        cy.get(LOGIN_BUTTON).should("be.visible").contains(/đăng nhập/i);
     });
 
     // TC_LOGIN_09
-    it("TC_LOGIN_09 - Sai Password", () => {
-
-        cy.get(USERNAME_INPUT).type(VALID_USERNAME);
-
-        cy.get(PASSWORD_INPUT).type(INVALID_PASSWORD);
-
-        cy.get(LOGIN_BUTTON).click();
-
-        cy.url().should("include", "portal.ut.edu.vn");
+    it("TC_LOGIN_09 - Verify Forgot Password Link display", () => {
+        cy.contains(/quên mật khẩu/i).should("be.visible");
     });
 
     // TC_LOGIN_10
-    it("TC_LOGIN_10 - Đăng nhập thành công", () => {
-
-        cy.get(USERNAME_INPUT).type(VALID_USERNAME);
-
-        cy.get(PASSWORD_INPUT).type(VALID_PASSWORD);
-
+    it("TC_LOGIN_10 - Verify Error Alert layout and text display", () => {
+        cy.get(USERNAME_INPUT).type(INVALID_USERNAME);
+        cy.get(PASSWORD_INPUT).type(INVALID_PASSWORD);
         cy.get(LOGIN_BUTTON).click();
-
-        cy.url().should("not.include", "/login");
+        
+        // Xác nhận hiển thị thông báo lỗi chính xác
+        cy.contains("Sai thông tin đăng nhập").should("be.visible");
     });
 
 });

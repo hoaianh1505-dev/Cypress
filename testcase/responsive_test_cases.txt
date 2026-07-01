@@ -1,0 +1,31 @@
+ID	Summary	Description	Test Steps	Expected Result	Actual Result	Status
+TC_RESPONSIVE_01	Verify Desktop Full HD (1920x1080)	Verify the portal is displayed properly and has no horizontal overflow scrollbar at 1920x1080 resolution.	"1. Set viewport to 1920x1080
+2. Log in to dashboard
+3. Verify body visibility and check body scrollWidth <= clientWidth"	No horizontal scrollbar is present and all main components fit inside the screen	Successfully verified that there is no horizontal layout overflow at Full HD	Passed
+TC_RESPONSIVE_02	Verify Laptop HD (1366x768)	Verify the portal layout is fluid and does not overflow at 1366x768 resolution.	"1. Set viewport to 1366x768
+2. Log in to dashboard
+3. Check body scrollWidth <= clientWidth"	Layout is fluid and elements fit inside the screen area	Successfully verified layout consistency on HD screen width	Passed
+TC_RESPONSIVE_03	Verify Tablet Landscape (1024x768)	Verify portal display on tablet landscape viewport.	"1. Set viewport to 1024x768
+2. Log in and verify body is visible
+3. Check body scrollWidth <= clientWidth"	No horizontal scrollbar and menu options scale correctly	Verified that components scale properly without horizontal overflow	Passed
+TC_RESPONSIVE_04	Verify Tablet Portrait (768x1024)	Verify portal display on tablet portrait viewport.	"1. Set viewport to 768x1024
+2. Log in and verify body is visible
+3. Check body scrollWidth <= clientWidth"	The grid system wraps and matches tablet viewport bounds	Responsive grid wrapped properly and met viewport width requirements	Passed
+TC_RESPONSIVE_05	Verify Mobile Large (414x896)	Verify portal display on a large mobile screen (like iPhone XR/11 Pro Max).	"1. Set viewport to 414x896
+2. Log in and check body is visible
+3. Check body scrollWidth <= clientWidth"	Content aligns vertically and no horizontal scrollbar is present	Verified content wraps neatly and fits the mobile screen	Passed
+TC_RESPONSIVE_06	Verify Mobile (390x844)	Verify portal display on standard mobile screen size (like iPhone 12/13/14).	"1. Set viewport to 390x844
+2. Log in and check body visibility
+3. Check body scrollWidth <= clientWidth"	Main panels fit the screen width and headers scale cleanly	Layout verified as clean on mobile width	Passed
+TC_RESPONSIVE_07	Verify iPhone X (375x812)	Verify portal display on iPhone X screen size.	"1. Set viewport to 375x812
+2. Log in and check body visibility
+3. Check body scrollWidth <= clientWidth"	Layout displays correctly on iPhone X viewport	Layout components adapted cleanly on iPhone X screen	Passed
+TC_RESPONSIVE_08	Verify Android (360x800)	Verify portal display on common Android viewports (360x800).	"1. Set viewport to 360x800
+2. Log in and check body visibility
+3. Check body scrollWidth <= clientWidth"	Content layout wraps cleanly inside the viewport	Layout displays correctly with no screen overflows	Passed
+TC_RESPONSIVE_09	Verify Small Mobile (320x568)	Verify portal display on very small mobile viewports (like iPhone SE/5).	"1. Set viewport to 320x568
+2. Log in and check body visibility
+3. Check body scrollWidth <= clientWidth"	Layout remains accessible and elements adjust to small screen	Elements scaled and adapted gracefully to small screen width	Passed
+TC_RESPONSIVE_10	Verify Desktop UI	Verify that on standard desktop view the viewport innerWidth is exactly 1366.	"1. Set viewport to 1366x768
+2. Log in
+3. Check window innerWidth is 1366"	The viewport width matches the desktop configuration	Viewport innerWidth confirmed as 1366	Passed

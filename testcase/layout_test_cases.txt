@@ -1,0 +1,45 @@
+ID	Summary	Description	Test Steps	Expected Result	Actual Result	Status
+TC_LAYOUT_01	Verify UTH logo display	Verify the UTH logo is displayed correctly	"1. Navigate to https://portal.ut.edu.vn/
+2. Observe the top-left corner of the screen"	"The logo is sharp, displayed in the correct ratio,
+and positioned at the top left"	"The UTH logo is displayed clearly,
+without blurriness, in the correct position"	Passed
+TC_LAYOUT_02	Verify Header background color	Verify the background color of the Header	"1. Navigate to https://portal.ut.edu.vn/
+2. Observe the Header bar at the top of the screen"	"The background color is the standard UTH blue,
+without patchiness"	"The Header is displayed uniformly in the
+standard blue color"	Passed
+TC_LAYOUT_03	Verify main content alignment	Verify the alignment of the main content area	"1. Navigate to https://portal.ut.edu.vn/
+2. Scroll down and observe the main content blocks"	"The content is center-aligned with equal left
+and right margins"	"The content blocks are perfectly center-aligned
+with balanced margins"	Passed
+TC_LAYOUT_04	Verify Footer display	Verify the Footer section is displayed correctly	"1. Navigate to https://portal.ut.edu.vn/
+2. Scroll to the bottom of the page"	"The footer is positioned at the bottom,
+showing sufficient contact information"	"The footer is fixed at the bottom,
+fully displaying the address and hotline"	Passed
+TC_LAYOUT_05	Verify spacing between modules	"Verify the spacing (margin/padding) between
+different functional modules"	"1. Navigate to https://portal.ut.edu.vn/
+2. Observe the spacing between functional buttons
+on the dashboard"	"The spacing is uniform and elements
+do not overlap"	"The spacing between modules is equal with
+no overlapping content"	Passed
+TC_LAYOUT_06	Verify font consistency	Verify the consistency of the font used across the page	"1. Navigate to https://portal.ut.edu.vn/
+2. Check the text in menus, buttons, and content blocks"	"The font family and size are consistent
+across the page with no encoding errors"	"The font is consistent and displays
+Vietnamese characters correctly"	Passed
+TC_LAYOUT_07	Verify image/banner proportions	"Verify that banners and images are displayed
+in the correct proportions"	"1. Navigate to https://portal.ut.edu.vn/
+2. Observe the main banners and profile images"	"Banners and images are displayed in the correct ratio,
+without distortion or overflowing"	"All images and banners maintain their aspect ratio
+and fit within their frames"	Passed
+TC_LAYOUT_08	Verify Sidebar display	"Verify the display of the Sidebar (Left menu)
+if applicable"	"1. Navigate to https://portal.ut.edu.vn/
+2. Log in and observe the left sidebar menu"	"The sidebar is displayed clearly and does not
+overlap the main content"	"The sidebar is fully visible and completely
+separated from the main content area"	Passed
+TC_LAYOUT_09	Verify Button UI	Verify the UI of functional buttons	"1. Navigate to https://portal.ut.edu.vn/
+2. Check the size, color, and border-radius of the buttons"	"The size, color, and border-radius of all
+buttons are uniform and match the design"	"All buttons are consistently styled according
+to the UI guidelines"	Passed
+TC_LAYOUT_10	Verify text overlap on screen resize	Verify text behavior when the screen is resized	"1. Navigate to https://portal.ut.edu.vn/
+2. Gradually shrink the browser window to simulate smaller screens"	"Text wraps neatly without overflowing the
+borders or overlapping images"	"The text dynamically wraps and adjusts correctly
+without overlapping other elements"	Passed

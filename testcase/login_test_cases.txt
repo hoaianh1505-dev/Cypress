@@ -1,0 +1,50 @@
+ID	Summary	Description	Test Steps	Expected Result	Actual Result	Status
+TC_LOGIN_01	Verify UTH Portal Logo display	Verify UTH Portal Logo is rendered and visible on the login page	"1. Navigate to https://portal.ut.edu.vn/
+2. Observe the header area"	The UTH Portal Logo is visible and displayed correctly	The UTH Portal Logo is visible and displays properly in the header	Passed
+TC_LOGIN_02	Verify Login Title display	"Verify the heading text ""ĐĂNG NHẬP HỆ THỐNG""
+is visible on the login panel"	"1. Navigate to https://portal.ut.edu.vn/
+2. Observe the main login panel title"	"The title ""ĐĂNG NHẬP HỆ THỐNG"" is visible
+and correctly styled in uppercase"	"The heading is displayed clearly
+with correct size and font"	Passed
+TC_LOGIN_03	Verify Username Label display	"Verify the text label ""Tài khoản đăng nhập""
+is visible above or inside the username field"	"1. Navigate to https://portal.ut.edu.vn/
+2. Look at the Username field area"	"The label text ""Tài khoản đăng nhập""
+is clearly displayed"	"The label ""Tài khoản đăng nhập""
+is visible and correctly positioned"	Passed
+TC_LOGIN_04	Verify Username Input Box display	Verify the Username text input box is rendered and visible	"1. Navigate to https://portal.ut.edu.vn/
+2. Locate the Username input box"	"The Username input box is visible
+and ready for text input"	"The input box is rendered correctly
+and available for user interaction"	Passed
+TC_LOGIN_05	Verify Password Label display	"Verify the text label ""Mật khẩu"" is visible
+above or inside the password field"	"1. Navigate to https://portal.ut.edu.vn/
+2. Look at the Password field area"	"The label text ""Mật khẩu""
+is clearly displayed"	"The label ""Mật khẩu"" is visible
+and correctly positioned"	Passed
+TC_LOGIN_06	Verify Password Input Box display	Verify the Password text input box is rendered and visible	"1. Navigate to https://portal.ut.edu.vn/
+2. Locate the Password input box"	"The Password input box is visible
+and correctly masks input values"	"The password input box is visible
+and successfully hides characters"	Passed
+TC_LOGIN_07	Verify Password Visibility Toggle button	"Verify the eye icon button to toggle
+password visibility is visible"	"1. Navigate to https://portal.ut.edu.vn/
+2. Look inside the Password input box"	"The password visibility toggle button
+(eye icon) is visible inside the field"	"The eye icon button is rendered correctly
+at the end of the input field"	Passed
+TC_LOGIN_08	Verify Login Button display	"Verify the Login submit button is visible
+with the correct text"	"1. Navigate to https://portal.ut.edu.vn/
+2. Locate the Login button inside the panel"	"The Login button is visible and displays
+the text ""ĐĂNG NHẬP"" in uppercase"	"The Login button is displayed with
+appropriate style and readable text"	Passed
+TC_LOGIN_09	Verify Forgot Password Link display	Verify the ""QUÊN MẬT KHẨU?"" link button is visible	"1. Navigate to https://portal.ut.edu.vn/
+2. Locate the link below the Login button"	"The ""QUÊN MẬT KHẨU?"" link button
+is visible and correctly styled"	"The link is displayed clearly
+and is ready to be clicked"	Passed
+TC_LOGIN_10	Verify Error Alert layout and text display	"Verify error notification pop-up/alert layout
+and warning message display upon
+incorrect credentials"	"1. Navigate to https://portal.ut.edu.vn/
+2. Enter invalid credentials in both fields
+3. Click the ĐĂNG NHẬP button
+4. Observe the warning box"	"An error alert banner or box appears with
+a warning icon and the exact text:
+""Sai thông tin đăng nhập"""	"The error warning alert is displayed clearly
+with red text stating:
+""Sai thông tin đăng nhập"""	Passed

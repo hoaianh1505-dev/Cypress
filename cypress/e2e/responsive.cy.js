@@ -1,16 +1,15 @@
 describe("Responsive Testing - Portal UTH", () => {
-
     const URL = "https://portal.ut.edu.vn/";
 
     const USERNAME = "087205006588";
-    const PASSWORD = "anh123456";
+    const PASSWORD = "abcxyz";
 
     const USERNAME_INPUT = 'input[name="username"]';
     const PASSWORD_INPUT = 'input[name="password"]';
     const LOGIN_BUTTON = 'button[type="submit"]';
 
-    // Hàm đăng nhập
-    function login() {
+    function login(width, height) {
+        cy.viewport(width, height);
 
         cy.visit(URL);
 
@@ -20,156 +19,148 @@ describe("Responsive Testing - Portal UTH", () => {
 
         cy.get(LOGIN_BUTTON).click();
 
-        // Đợi đăng nhập thành công
         cy.wait(3000);
 
+        // Đảm bảo đăng nhập thành công
+        cy.url().should("not.include", "login");
     }
 
+    //==================================================
     // TC_RESPONSIVE_01
-    it("TC_RESPONSIVE_01 - Desktop Full HD (1920x1080)", () => {
+    // Desktop Full HD
+    //==================================================
+    it("TC_RESPONSIVE_01 - Verify Desktop Full HD (1920x1080)", () => {
+        login(1920, 1080);
 
-        cy.viewport(1920, 1080);
+        cy.get("body").should("be.visible");
 
-        login();
-
-        cy.wait(2000);
-
-
-
+        cy.document().then((doc) => {
+            expect(doc.body.scrollWidth).to.be.lte(doc.documentElement.clientWidth);
+        });
     });
 
+    //==================================================
     // TC_RESPONSIVE_02
-    it("TC_RESPONSIVE_02 - Laptop HD (1366x768)", () => {
+    // Laptop
+    //==================================================
+    it("TC_RESPONSIVE_02 - Verify Laptop HD (1366x768)", () => {
+        login(1366, 768);
 
-        cy.viewport(1366, 768);
+        cy.get("body").should("be.visible");
 
-        login();
-
-        cy.wait(2000);
-
-
+        cy.document().then((doc) => {
+            expect(doc.body.scrollWidth).to.be.lte(doc.documentElement.clientWidth);
+        });
     });
 
+    //==================================================
     // TC_RESPONSIVE_03
-    it("TC_RESPONSIVE_03 - Tablet (1024x768)", () => {
+    // Tablet Landscape
+    //==================================================
+    it("TC_RESPONSIVE_03 - Verify Tablet Landscape (1024x768)", () => {
+        login(1024, 768);
 
-        cy.viewport(1024, 768);
+        cy.get("body").should("be.visible");
 
-        login();
-
-        cy.wait(2000);
-
+        cy.document().then((doc) => {
+            expect(doc.body.scrollWidth).to.be.lte(doc.documentElement.clientWidth);
+        });
     });
 
+    //==================================================
     // TC_RESPONSIVE_04
-    it("TC_RESPONSIVE_04 - Tablet Portrait (768x1024)", () => {
+    // Tablet Portrait
+    //==================================================
+    it("TC_RESPONSIVE_04 - Verify Tablet Portrait (768x1024)", () => {
+        login(768, 1024);
 
-        cy.viewport(768, 1024);
+        cy.get("body").should("be.visible");
 
-        login();
-
-        cy.wait(2000);
-
-
+        cy.document().then((doc) => {
+            expect(doc.body.scrollWidth).to.be.lte(doc.documentElement.clientWidth);
+        });
     });
 
+    //==================================================
     // TC_RESPONSIVE_05
-    it("TC_RESPONSIVE_05 - Mobile Large (414x896)", () => {
+    // Mobile Large
+    //==================================================
+    it("TC_RESPONSIVE_05 - Verify Mobile Large (414x896)", () => {
+        login(414, 896);
 
-        cy.viewport(414, 896);
+        cy.get("body").should("be.visible");
 
-        login();
-
-        cy.wait(2000);
-
-
+        cy.document().then((doc) => {
+            expect(doc.body.scrollWidth).to.be.lte(doc.documentElement.clientWidth);
+        });
     });
 
+    //==================================================
     // TC_RESPONSIVE_06
-    it("TC_RESPONSIVE_06 - Mobile (390x844)", () => {
+    // Mobile
+    //==================================================
+    it("TC_RESPONSIVE_06 - Verify Mobile (390x844)", () => {
+        login(390, 844);
 
-        cy.viewport(390, 844);
+        cy.get("body").should("be.visible");
 
-        login();
-
-        cy.wait(2000);
-
-
+        cy.document().then((doc) => {
+            expect(doc.body.scrollWidth).to.be.lte(doc.documentElement.clientWidth);
+        });
     });
 
+    //==================================================
     // TC_RESPONSIVE_07
-    it("TC_RESPONSIVE_07 - Mobile (375x812)", () => {
+    // iPhone X
+    //==================================================
+    it("TC_RESPONSIVE_07 - Verify iPhone X (375x812)", () => {
+        login(375, 812);
 
-        cy.viewport(375, 812);
+        cy.get("body").should("be.visible");
 
-        login();
-
-        cy.wait(2000);
-
+        cy.document().then((doc) => {
+            expect(doc.body.scrollWidth).to.be.lte(doc.documentElement.clientWidth);
+        });
     });
 
+    //==================================================
     // TC_RESPONSIVE_08
-    it("TC_RESPONSIVE_08 - Android (360x800)", () => {
+    // Android
+    //==================================================
+    it("TC_RESPONSIVE_08 - Verify Android (360x800)", () => {
+        login(360, 800);
 
-        cy.viewport(360, 800);
+        cy.get("body").should("be.visible");
 
-        login();
-
-        cy.wait(2000);
-
-
+        cy.document().then((doc) => {
+            expect(doc.body.scrollWidth).to.be.lte(doc.documentElement.clientWidth);
+        });
     });
 
+    //==================================================
     // TC_RESPONSIVE_09
-    it("TC_RESPONSIVE_09 - Small Mobile (320x568)", () => {
+    // Small Mobile
+    //==================================================
+    it("TC_RESPONSIVE_09 - Verify Small Mobile (320x568)", () => {
+        login(320, 568);
 
-        cy.viewport(320, 568);
+        cy.get("body").should("be.visible");
 
-        login();
-
-        cy.wait(2000);
-
-
+        cy.document().then((doc) => {
+            expect(doc.body.scrollWidth).to.be.lte(doc.documentElement.clientWidth);
+        });
     });
 
+    //==================================================
     // TC_RESPONSIVE_10
-    it("TC_RESPONSIVE_10 - Kiểm tra Sidebar hiển thị", () => {
-
-        cy.viewport(1366, 768);
-
-        login();
-
-        cy.wait(2000);
+    // Sidebar/Desktop
+    //==================================================
+    it("TC_RESPONSIVE_10 - Verify Desktop UI", () => {
+        login(1366, 768);
 
         cy.get("body").should("be.visible");
 
-
-    });
-
-    // TC_RESPONSIVE_11
-    it("TC_RESPONSIVE_11 - Kiểm tra Dashboard hiển thị", () => {
-
-        cy.viewport(390, 844);
-
-        login();
-
-        cy.wait(2000);
-
-        cy.get("body").should("be.visible");
-
-    });
-
-    // TC_RESPONSIVE_12
-    it("TC_RESPONSIVE_12 - Kiểm tra không bị vỡ giao diện", () => {
-
-        cy.viewport(1920, 1080);
-
-        login();
-
-        cy.wait(2000);
-
-        cy.get("body").should("be.visible");
-
+        cy.window().its("innerWidth").should("eq", 1366);
     });
 
 });

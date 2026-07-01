@@ -1,0 +1,25 @@
+ID	Summary	Description	Test Steps	Expected Result	Actual Result	Status
+TC_ANN_01	Verify Announcement section display	Verify the news/announcement section list is displayed correctly	"1. Navigate to https://portal.ut.edu.vn/
+2. Observe the homepage tabpanel and links starting with /newfeeds/"	The tabpanel is visible and displays at least 1 announcement link	Tabpanel is visible and lists multiple announcement items	Passed
+TC_ANN_02	Verify clicking to view Announcement details	Verify navigation to the detail view of an announcement when clicked	"1. Navigate to https://portal.ut.edu.vn/
+2. Click on the first announcement link in the list
+3. Verify the URL matches /newfeeds/ID and body is visible"	The system redirects to the announcement detail page with a valid ID URL and the content is visible	Successfully redirected to the newfeeds details URL and the body content rendered	Passed
+TC_ANN_03	Verify empty state when no announcements	Verify the portal displays properly without crashes when there are no announcements returned from the server	"1. Intercept the notification API to return empty list
+2. Reload the page
+3. Verify the body renders normally"	The page handles the empty announcement state gracefully and renders the body without error	Page loaded and body rendered normally when mock data was empty	Passed
+TC_ANN_04	Verify Responsive UI on Mobile/Tablet	Verify that the announcement section renders without scroll overflows on mobile screens	"1. Set viewport to iphone-x (375x812)
+2. Observe the tabpanel display
+3. Check overflow-x property of document body"	The tabpanel is fully visible and the body has no horizontal overflow-x issues	Rendered correctly on iPhone X width without horizontal page scrollbars	Passed
+TC_ANN_05	Verify tabs/categories of announcements	Verify switching to a different category tab (like ""Đào tạo"") updates and displays announcement list	"1. Click on the tab containing text ""Đào tạo""
+2. Verify the new tabpanel displays at least 1 announcement link"	The chosen category tab is displayed with updated relevant announcements	Switched to training (""Đào tạo"") category tab and displayed the listing correctly	Passed
+TC_ANN_06	Verify pagination / 'View All' button functionality	Verify that clicking ""Xem tất cả"" redirects to the full announcement listing page	"1. Click the link containing text ""Xem tất cả""
+2. Verify URL contains ""/newfeeds""
+3. Verify at least 1 announcement link exists on the page"	Redirects to the ""/newfeeds"" listing page and shows the full list of announcements	Successfully redirected to the newfeeds page with listing items visible	Passed
+TC_ANN_07	Verify viewing/downloading attachments	Verify clicking on an announcement from the page redirects to its detail page	1. Click on the first announcement link in the list	Opens the details page of that announcement item successfully	Redirected to the correct detail view	Passed
+TC_ANN_08	Verify navigating back to Home by clicking UTH Logo from detail page	Verify clicking the school logo on the announcement detail page redirects back to the main homepage	"1. Go to announcement detail page
+2. Click the UTH school logo at the top left header
+3. Verify URL returns back to https://portal.ut.edu.vn/"	User is successfully redirected back to the portal homepage	Redirection back to homepage was successful	Passed
+TC_ANN_09	Verify Unread/Read status badge	Verify UI displays of the notifications/announcements badges or dynamic items	1. Observe the notification elements on the screen	Notification items are present and displayed properly	Badge elements are verified as displayed if present	Passed
+TC_ANN_10	Verify Date & Time formatting and sorting	Verify the publication date format of the news items contains the DD/MM/YYYY pattern	"1. Locate the first announcement item
+2. Retrieve its text content
+3. Validate the date matches the regex pattern DD/MM/YYYY"	The publication date matches the DD/MM/YYYY format pattern	Validated that date strings display properly with the standard DD/MM/YYYY layout	Passed

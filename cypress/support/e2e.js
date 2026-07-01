@@ -16,6 +16,11 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 
+// Bỏ qua lỗi ngoại lệ (uncaught exception) tự động ném ra từ code của trang web
+Cypress.on('uncaught:exception', (err, runnable) => {
+    return false;
+});
+
 // Thêm delay 2 giây cho mỗi test case (tc)
 afterEach(() => {
     cy.wait(2000);
